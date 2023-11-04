@@ -113,8 +113,8 @@ GO
 CREATE TABLE [dbo].[Hospital](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](250) Not NULL,
-	[Address] [nvarchar](250) Not NULL,
-	[GoogleMapLink] [nvarchar](250) Not NULL,
+	[Address] [nvarchar](500) Not NULL,
+	[GoogleMapLink] NVARCHAR(MAX) Not NULL,
 	[DistanceInKm] [int] Not NULL,
 	[CreatedDate] [datetime] NOT NULL,
 	CONSTRAINT [PK_Hospital] PRIMARY KEY CLUSTERED 
@@ -125,4 +125,10 @@ CREATE TABLE [dbo].[Hospital](
 GO
 /**** Seeding to Table [dbo].[Hospital] *****/
 Insert INTO [dbo].[Hospital](Name, Address, GoogleMapLink, DistanceInKm, CreatedDate) 
-VALUES ('', '', '', 4, DATE.)
+VALUES ('Sunshine Hospitality', 'Begumpet, 1-11-254/11, Begumpet Rd, Prakash Nagar, Begumpet, Hyderabad, Telangana 500016', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.308516679963!2d78.46689957394496!3d17.444941601146983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb90a3fdf23acf%3A0x721ef63f40910d1a!2sSunshine%20Hospitality!5e0!3m2!1sen!2sin!4v1694523990288!5m2!1sen!2sin" width="300" height="350" style="border: 0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade', 2, '2023-04-11 19:03:57.000')
+Insert INTO [dbo].[Hospital](Name, Address, GoogleMapLink, DistanceInKm, CreatedDate) 
+VALUES ('KIMS Hospitality', 'Begumpet, 1-8-31/1, Minister Rd, Krishna Nagar, Ramgopalpet, Secunderabad, Hyderabad, Telangana 500003', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.483184890202!2d78.47997587394477!3d17.43657270138876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9a044ce8779d%3A0xe3d099b2316a1d2b!2sKIMS%20Hospitals!5e0!3m2!1sen!2sin!4v1694524635358!5m2!1sen!2sin" width="300" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade', 2.5, '2023-04-11 19:03:57.000')
+Insert INTO [dbo].[Hospital](Name, Address, GoogleMapLink, DistanceInKm, CreatedDate) 
+VALUES ('Apollo Hospitality', 'Apollo health City Campus, Road No.92, Jubilee Hills, Film Nagar, Hyderabad, Telangana 500090', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.9322645710176!2d78.40964007394415!3d17.41503800201039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb96cedf4c3327%3A0x41edbf89d86ce2c8!2sApollo%20Institute%20of%20Medical%20Sciences%20and%20Research!5e0!3m2!1sen!2sin!4v1694524714958!5m2!1sen!2sin" width="300" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade', 3, '2023-04-11 19:03:57.000')
+
+
