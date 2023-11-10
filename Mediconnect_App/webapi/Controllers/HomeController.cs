@@ -38,8 +38,8 @@ namespace webapi.Controllers
             while (reader.Read())
             {
                 DonationDetails don = new DonationDetails();
-                don.donorid = reader.GetValue(0).ToString();
-                don.organs = reader.GetValue(1).ToString();
+                don.donorid = (int)reader.GetValue(0);
+                don.organs = new List<Organ> { };
                 don.medinfo = reader.GetValue(2).ToString();
                 don.name = reader.GetValue(3).ToString();
                 don.relationship = reader.GetValue(4).ToString();
@@ -60,7 +60,7 @@ namespace webapi.Controllers
             {
                 SqlConnection con = new SqlConnection(_config);
                 con.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO UserRegistration(Firstname,Lastname,Gender,DOB,BloodGroup,Email,Address,City,State,Zipcode,Username,Password,ConfirmPassword,CreatedDate) " + "Values('" + reg.firstname + "','" + reg.lastname + "','" + reg.gender + "','" + DateTime.Now.ToLongDateString() + "','" + reg.bloodgroup + "','" + reg.email + "','" + reg.address + "','" + reg.city + "','" + reg.state + "','" + reg.zipcode + "','" + reg.email + "','" + reg.password + "','" + reg.confirmpassword + "','" + DateTime.Now + "')", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO UserRegistration(Role, Firstname,Lastname,Gender,DOB,BloodGroup,Email,Address,City,State,Zipcode,Username,Password,ConfirmPassword,CreatedDate) " + "Values('" + 0 + "','" + reg.firstname + "','" + reg.lastname + "','" + reg.gender + "','" + DateTime.Now.ToLongDateString() + "','" + reg.bloodgroup + "','" + reg.email + "','" + reg.address + "','" + reg.city + "','" + reg.state + "','" + reg.zipcode + "','" + reg.email + "','" + reg.password + "','" + reg.confirmpassword + "','" + DateTime.Now + "')", con);
                 cmd.ExecuteNonQuery();
                 con.Close();
             }

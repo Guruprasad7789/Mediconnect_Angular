@@ -3,6 +3,7 @@
     public class Register
     {
         public string? regid { get; set; }
+        public int? role { get; set; }
         public string? firstname { get; set; }
         public string? lastname { get; set; }
         public string? gender { get; set; }

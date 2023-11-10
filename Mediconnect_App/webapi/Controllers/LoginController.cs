@@ -30,20 +30,21 @@ namespace webapi.Controllers
                 while (reader.Read())
                 {
                     reg.regid = reader.GetValue(0).ToString();
-                    reg.firstname = reader.GetValue(1).ToString();
-                    reg.lastname = reader.GetValue(2).ToString();
-                    reg.gender = reader.GetValue(3).ToString();
-                    reg.dob = reader.GetValue(4).ToString();
-                    reg.bloodgroup = reader.GetValue(5).ToString();
-                    reg.email = reader.GetValue(6).ToString();
-                    reg.address = reader.GetValue(7).ToString();
-                    reg.city = reader.GetValue(8).ToString();
-                    reg.state = reader.GetValue(9).ToString();
-                    reg.zipcode = reader.GetValue(10).ToString();
-                    reg.username = reader.GetValue(11).ToString();
-                    reg.password = reader.GetValue(12).ToString();
-                    reg.confirmpassword = reader.GetValue(13).ToString();
-                    reg.createddate = reader.GetValue(14).ToString();
+                    reg.role = (int)reader.GetValue(1);
+                    reg.firstname = reader.GetValue(2).ToString();
+                    reg.lastname = reader.GetValue(3).ToString();
+                    reg.gender = reader.GetValue(4).ToString();
+                    reg.dob = reader.GetValue(5).ToString();
+                    reg.bloodgroup = reader.GetValue(6).ToString();
+                    reg.email = reader.GetValue(7).ToString();
+                    reg.address = reader.GetValue(8).ToString();
+                    reg.city = reader.GetValue(9).ToString();
+                    reg.state = reader.GetValue(10).ToString();
+                    reg.zipcode = reader.GetValue(11).ToString();
+                    reg.username = reader.GetValue(12).ToString();
+                    reg.password = reader.GetValue(13).ToString();
+                    reg.confirmpassword = reader.GetValue(14).ToString();
+                    reg.createddate = reader.GetValue(15).ToString();
                 }
 
                 if (reg.regid=="")

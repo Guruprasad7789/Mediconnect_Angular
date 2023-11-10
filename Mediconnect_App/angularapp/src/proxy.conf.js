@@ -1,11 +1,11 @@
 const PROXY_CONFIG = [
   {
     context: [
-      "/weatherforecast",
       "/home",
       "/donations",
       "/recipient",
       "/donor",
+      "/organ",
       "/login",
       "/feedback",
       "/contact",

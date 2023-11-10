@@ -13,7 +13,7 @@ import { HospitalsComponent } from './hospitals/hospitals.component';
 import { RecipientComponent } from './recipient/recipient.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RegisterComponent } from './register/register.component';
-import { ViewDonorsComponent } from './view-donors/view-donors.component';
+import { DialogContentDialog, ViewDonorsComponent } from './view-donors/view-donors.component';
 import { ViewRecipientsComponent } from './view-recipients/view-recipients.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AwarenessComponent } from './awareness/awareness.component';
@@ -24,6 +24,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DonorCardComponent } from './donor-card/donor-card.component';
 import { FooterComponent } from './Footer/footer.component';
+import { ManageDonationsComponent } from './manage-donations/manage-donations.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -44,16 +46,19 @@ import { FooterComponent } from './Footer/footer.component';
     ContactUsComponent,
     AboutUsComponent,
     DonorCardComponent,
-    FooterComponent
+    FooterComponent,
+    ManageDonationsComponent,
+    DialogContentDialog
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDialogModule
   ],
   providers: [AuthGuard, AppService],
-  bootstrap: [AppComponent,LoginComponent]
+  bootstrap: [AppComponent,LoginComponent],
 })
 export class AppModule { }

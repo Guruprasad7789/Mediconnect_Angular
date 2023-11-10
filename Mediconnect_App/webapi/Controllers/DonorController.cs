@@ -29,8 +29,29 @@ namespace webapi.Controllers
             {
                 SqlConnection con = new SqlConnection(_config);
                 con.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO DonorData(Organs,MedInfo,Name,Relationship,Contact,Address,Sign,CreatedDate) " + "Values('" + don.organs + "','" + don.medinfo + "','" + don.name + "','" + don.relationship + "','" + don.contact + "','" + don.address + "','" + don.sign + "','" + DateTime.Now.ToLongDateString() + "')", con);
-                cmd.ExecuteNonQuery();
+                SqlCommand cmd = new SqlCommand("INSERT INTO DonorData(Organs,MedInfo,Name,Relationship,Contact,Address,Sign,CreatedDate) "
+                    + "OUTPUT INSERTED.DonorID "
+                    + "Values('" + "" + "','" + don.medinfo + "','" + don.name + "','" + don.relationship + "','" + don.contact + "','" + don.address + "','" + don.sign + "','" + DateTime.Now.ToLongDateString() + "')", con);
+                var insertedId = cmd.ExecuteScalar();
+
+                if (insertedId != null)
+                {
+                    int newId = Convert.ToInt32(insertedId);
+                    // The 'newId' variable now holds the ID of the inserted element.
+                    foreach (int organ_id in don.organs.organsData)
+                    {
+                        SqlCommand cmdMap = new SqlCommand("INSERT INTO UserOrganMap(UserId, OrganId, DonorId, IsDonated)" + "Values('" + don.userid + "','" + organ_id + "','" + newId + "','" + 0 + "')", con);
+
+                        cmdMap.ExecuteNonQuery();
+                    }
+                    foreach (int med in don.medinfo)
+                {
+                    SqlCommand cmdMed = new SqlCommand("INSERT INTO UserMedicalMap(UserId, MedId, DonorId)" + "Values('" + don.userid + "','" + med + "','" + newId + "')", con);
+
+                    cmdMed.ExecuteNonQuery();
+                }
+                }
+
                 con.Close();
             }
             catch (Exception ex)

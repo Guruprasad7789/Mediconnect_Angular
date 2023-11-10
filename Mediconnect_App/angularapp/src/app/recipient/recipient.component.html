@@ -62,14 +62,15 @@
       </div>
       <div class="form-group">
         <label>Organs Needed<span class="mandatory">*</span>:</label>
-        <div formArrayName="selectedOrgans">
+        <div>
           <div *ngFor="let organ of organs; index as i" class="form-check">
-            <input class="form-check-input" type="checkbox" [id]="organ.value" [formControlName]="i"
-              [name]="organ.value" [value]="organ.value">
-            <label class="form-check-label" [for]="organ.value">{{organ.name}}</label>
+            <input class="form-check-input" type="checkbox" [id]="'organ'+ organ.id" [(ngModel)]="organ.checked"
+            [ngModelOptions]="{standalone: true}"
+              [name]="organ.id" [value]="organ.id">
+            <label class="form-check-label" [for]="'organ'+ organ.id">{{organ.name}}</label>
           </div>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="otherOrganInfo">Additional Organ Information:</label>
           <input [readonly]="!recipientForm.get('selectedOrgans')?.value[organs.length - 1]" type="text" id="otherOrganInfo" formControlName="organsinfos" class="form-control"
             [class.invalid-border]="isSubmitted && recipientForm.get('selectedOrgans')?.value[organs.length - 1] && recipientForm.get('organsinfos')?.value.length ===0 &&
@@ -78,7 +79,7 @@
           (recipientForm.get('organsinfos')?.dirty || recipientForm.get('organsinfos')?.touched)"
             class="text-danger small font-weight-bold mt-2">
             Additional Organ Information is required, if other is selected.</div>
-        </div>
+        </div> -->
         <div *ngIf="isSubmitted && recipientForm.get('selectedOrgans')?.value && !recipientForm.get('selectedOrgans')?.value.includes(true)"
           class="text-danger small font-weight-bold mt-2">
           Organs selection is required.</div>

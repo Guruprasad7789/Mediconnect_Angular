@@ -18,6 +18,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DonorCardComponent } from './donor-card/donor-card.component';
+import { ManageDonationsComponent } from './manage-donations/manage-donations.component';
 
 // Create a routes Array
 const routes: Routes = [
@@ -56,11 +57,11 @@ const routes: Routes = [
     path: 'register',
     component: RegisterComponent
   },
-  {
-    path: 'donation',
-    component: DonationsComponent,
-    canActivate: [AuthGuard]
-  },
+  // {
+  //   path: 'donation',
+  //   component: DonationsComponent,
+  //   canActivate: [AuthGuard]
+  // },
   {
     path: 'hospital',
     component: HospitalsComponent,
@@ -89,6 +90,11 @@ const routes: Routes = [
   {
     path: 'donation-card',
     component: DonorCardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'manage-donations',
+    component: ManageDonationsComponent,
     canActivate: [AuthGuard]
   },
   {

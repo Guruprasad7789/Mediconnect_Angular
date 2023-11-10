@@ -61,14 +61,14 @@
         </div>
       </div>
       <h2>Organs<span class="mandatory">*</span>:</h2>
-      <ng-container *ngFor="let organ of organs; index as i">
+      <ng-container *ngFor="let organ of organList; index as i">
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" [id]="organ.value" [(ngModel)]="organ.checked"
-            [ngModelOptions]="{standalone: true}" [name]="organ.value" [value]="organ.value">
-          <label class="form-check-label" [for]="organ.value">{{organ.name}}</label>
-          <input *ngIf="i === organs.length - 1" [readonly]="!organs[organs.length - 1].checked"
+          <input class="form-check-input" type="checkbox" [id]="'organ'+ organ.id" [(ngModel)]="organ.checked"
+            [ngModelOptions]="{standalone: true}" [name]="organ.id" [value]="organ.id">
+          <label class="form-check-label" [for]="'organ' + organ.id">{{organ.name}}</label>
+          <!-- <input *ngIf="i === organList.length - 1" [readonly]="!organList[organList.length - 1].checked"
             formControlName="organinfos" class="form-control" type="text" id="otherOrgansInput" name="otherOrgansInput"
-            placeholder="Specify other organs">
+            placeholder="Specify other organs"> -->
         </div>
 
       </ng-container>
@@ -77,21 +77,18 @@
       <div *ngIf="isSubmitted && checkOtherOrgansSelectedButNoContent()" class="text-danger small font-weight-bold mt-2">
         Specify other organs is required.</div>
 
-      <h2>Medical Information<span class="mandatory">*</span>:</h2>
+      <h2>Medical Information:</h2>
       <ng-container *ngFor="let med of meds; index as i">
         <div class="form-check">
           <input class="form-check-input" type="checkbox" [(ngModel)]="med.checked"
-            [ngModelOptions]="{standalone: true}" [id]="med.value" [name]="med.value" [value]="med.value">
-          <label class="form-check-label" [for]="med.value">{{med.name}}</label>
-          <input *ngIf="i === meds.length - 1" [readonly]="!meds[meds.length - 1].checked" class="form-control"
+            [ngModelOptions]="{standalone: true}" [id]="'med'+ med.id" [name]="med.id" [value]="med.id">
+          <label class="form-check-label" [for]="'med'+ med.id">{{med.name}}</label>
+          <!-- <input *ngIf="i === meds.length - 1" [readonly]="!meds[meds.length - 1].checked" class="form-control"
             formControlName="medinfos" type="text" id="otherConditionsInput" name="otherConditionsInput"
-            placeholder="Specify other conditions">
+            placeholder="Specify other conditions"> -->
         </div>
 
       </ng-container>
-      <div *ngIf="isSubmitted && !checkMedsSelected()" class="text-danger small font-weight-bold mt-2">
-        Medical information is required.</div>
-
       <div *ngIf="isSubmitted && checkOtherMedsSelectedButNoContent()" class="text-danger small font-weight-bold mt-2">
         Specify other medical information is required.</div>
 

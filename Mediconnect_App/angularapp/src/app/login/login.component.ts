@@ -23,17 +23,16 @@ export class LoginComponent {
 
   clearinput() {
     this.showMsg = false;
-    this.isValid= false;
+    this.isValid = false;
     this.userData = new UserDetails;
   }
 
   validateUser() {
-    if(this.userData.email=="" || this.userData.email=="")
-    {
-      this.isValid= true;
+    if (this.userData.email == "" || this.userData.email == "") {
+      this.isValid = true;
       this.showMsg = false;
     }
-    else{
+    else {
       this.http.post<any>('/login', this.userData).subscribe({
         next: data => {
           if (data.regid == null) {
@@ -42,8 +41,12 @@ export class LoginComponent {
             this.router.navigate(['/login']);
           } else {
             this.showMsg = false;
-            this.isValid= false;
-            this.router.navigate(['/dashboard']);
+            this.isValid = false;
+            if (data.role === 1) {
+              this.router.navigate(['/manage-donations']);
+            } else {
+              this.router.navigate(['/dashboard']);
+            }
             localStorage.setItem('userInfo', JSON.stringify(data));
           }
 
